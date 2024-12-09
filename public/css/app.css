@@ -1,0 +1,292 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* 
+------------------
+Main Style
+------------------
+*/
+:root {
+
+    /*  */
+    --white-color: #ffffff;
+    --text-color: #423C3C;
+    --black-color: #000000;
+
+
+    --button-color: #D90C5A;
+    --secondary-color: #FFC412;
+    --card-background: #FBFBFD;
+    --card-border: #F4F4F4;
+    --hover-border-color: #FDC31D;
+
+
+    --green-box: #D6E5E0;
+    --green-box-font: #458A63;
+    --pink-box: #d76b005b;
+    --pink-box-font: #D76B00;
+    --red-box: #F2D8CD;
+    --red-box-font: #CA2E00;
+    --orange-box: #FDEAB9;
+    --orange-box-font: #AD7D02;
+
+    --gray-color: #9B9B9D;
+    --gray-dark: #535462;
+    --gray-dark-color: #3F3F3F;
+    --number-color: #616160;
+
+
+}
+
+*,
+ul,
+ol {
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+a {
+    color: #1E1E1E;
+}
+
+
+a:hover,
+a:focus {
+    color: #FFC412;
+}
+
+html {
+    overflow-y: scroll;
+    /* scroll-behavior: smooth; */
+    font-size: 16px;
+}
+
+.grid-container {
+    max-width: 85rem;
+}
+
+body {
+    background: var(--white-color);
+    color: #000000;
+    font-weight: 400;
+    overflow-x: hidden;
+}
+
+ul {
+    list-style-position: inside;
+    font-weight: 400;
+    list-style: none;
+    margin: 0 !important;
+}
+
+p:last-child {
+    margin-bottom: 0;
+}
+
+::-moz-selection {
+    background-color: #B7B5E4;
+    color: #fff
+}
+
+::selection {
+    background-color: #B7B5E4;
+    color: #fff
+}
+
+
+/* ===== Scrollbar CSS ===== */
+html::-webkit-scrollbar {
+    width: 7px;
+}
+
+html::-webkit-scrollbar-track {
+    background: #92a2c43a
+}
+
+html::-webkit-scrollbar-thumb {
+    background: #ffc412;
+    opacity: 0.8;
+    border-radius: 40px;
+}
+
+/* typography */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--black-color);
+    font-family: Anjoman Max FN !important;
+    /* margin: 0 */
+}
+
+.h1,
+h1 {
+    font-size: 1.8rem;
+    /* margin: 0; */
+}
+
+.h2,
+h2 {
+    font-size: 1.6rem;
+    /* margin: 0; */
+}
+
+.h3,
+h3 {
+    font-size: 1.09rem;
+    /* margin: 0; */
+}
+
+.h4,
+h4 {
+    font-size: 1.04rem;
+    /* margin: 0; */
+}
+
+/* 
+------------------
+input
+------------------
+*/
+input.input,
+textarea.input {
+    border: 1px solid #D9DDED !important;
+    box-shadow: none !important;
+    line-height: 40px;
+    height: calc(1.5rem + 28px);
+    padding: 5px 15px;
+    outline: 0;
+    font-size: 1rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    border-radius: 12px;
+}
+
+input.text-rigth{
+    text-align: right;
+}
+
+input.input::-webkit-input-placeholder,
+textarea.input::-webkit-input-placeholder {
+    color: #7F8DAC;
+    text-align: right;
+}
+
+input.input::-moz-placeholder,
+textarea.input::-moz-placeholder {
+    color: #7F8DAC;
+    text-align: right;
+}
+
+input.input:-ms-input-placeholder,
+textarea.input:-ms-input-placeholder {
+    color: #7F8DAC;
+    text-align: right;
+}
+
+input.input::-ms-input-placeholder,
+textarea.input::-ms-input-placeholder {
+    color: #7F8DAC;
+    text-align: right;
+}
+
+input.input::placeholder,
+textarea.input::placeholder {
+    color: #7F8DAC;
+    text-align: right;
+}
+
+textarea.input {
+    resize: none;
+    height: auto;
+}
+
+.input-error {
+    color: #C50000;
+    font-size: 0.8rem;
+    font-weight: 300;
+    margin: -1rem 0 0.4rem 0
+}
+
+
+/* 
+------------------
+buttons
+------------------
+*/
+.button {
+    border-radius: 12px;
+    padding: 15px 25px;
+    margin: 0;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button.primary {
+    color: var(--white-color);
+    background-color: var(--button-color);
+}
+
+.button.primary:focus,
+.button.primary:hover {
+    background-color: #c00a4f;
+    color: #fefefe;
+}
+
+.button.secondary {
+    background-color: #FDC31D;
+    color: #000000;
+}
+
+.button.secondary:focus,
+.button.secondary:hover {
+    background-color: #daa619;
+    color: #000000;
+}
+
+.button.gray {
+    background: #F8F8FB;
+    border: 1px solid #ECECEC;
+    color: #757167;
+}
+
+.button.gray:focus,
+.button.gray:hover {
+    background: #f2f2f5
+}
+
+.button.green {
+    background-color: #3DAEA8;
+    color: #ffffff;
+}
+
+.button.green:focus,
+.button.green:hover {
+    background: #39a39e
+}
+
+.button.has-icon {
+    padding-left: 40px;
+}
+
+.button.has-icon .icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    transition: 0.3s all ease-in-out;
+    -webkit-transition: 0.3s all ease-in-out;
+}
+
+.button.has-icon:enabled:hover .icon {
+    left: 10px;
+}

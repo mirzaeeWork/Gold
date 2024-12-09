@@ -9,36 +9,25 @@ export default function SignupForm() {
     const [formState, formAction] = useActionState(signup, initialState);
 
   return (
-    <form action={formAction}>
+    <form action={formAction} className='text-right'>
       <div>
-        <label htmlFor="name">Name</label>
-        <input id="name" name="name" placeholder="Name" />
+        <input className='input text-rigth' id="name" name="name" placeholder="نام" autoFocus/>
+
       </div>
-      {formState?.errors?.name && <p>{formState.errors.name}</p>}
+      {formState?.errors?.name && <p className='input-error'>{formState.errors.name}</p>}
 
       <div>
-        <label htmlFor="email">Email</label>
-        <input id="email" name="email" placeholder="Email" />
+        <input className='input' id="email" name="email" placeholder="ایمیل" />
       </div>
-      {formState?.errors?.email && <p>{formState.errors.email}</p>}
+      {formState?.errors?.email && <p className='input-error'>{formState.errors.email}</p>}
 
       <div>
-        <label htmlFor="password">Password</label>
-        <input id="password" name="password" type="password" />
+        <input className='input' id="password" name="password" type="password" placeholder="پسورد"/>
       </div>
-      {formState?.errors?.password && (
-        <div>
-          <p>Password must:</p>
-          <ul>
-            {formState.errors.password.map((error) => (
-              <li key={error}>- {error}</li>
-            ))}
-          </ul>
-        </div>
-      )}
-      {formState?.message && <p>{formState?.message}</p>}
-      <button type="submit">
-        Sign Up
+      {formState?.errors?.password &&  <p className='input-error'>{formState.errors.password}</p>}
+      {formState?.message && <p className='input-error'>{formState?.message}</p>}
+      <button type="submit" className="button secondary expanded has-icon">
+        ثبت نام
       </button>
     </form>
   )

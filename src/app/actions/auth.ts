@@ -20,33 +20,49 @@ export async function signup(state: FormState, formData: FormData) {
   
   const { name, email, password } = validatedFields.data;
 
+try {
+    // هش کردن رمز عبور
+    const hashedPassword = await bcrypt.hash(password, 10);
+    console.log({ name, email, hashedPassword })
 
+    // بررسی وجود ایمیل در پایگاه داده
+    const existingUser = await prisma.user.findUnique({
+      where: { email },
+    });
 
-  // هش کردن رمز عبور
-  const hashedPassword = await bcrypt.hash(password, 10);
-
-  // ذخیره در دیتابیس
-  const user = await prisma.user.create({
-    data: {
-      name,
-      email,
-      password: hashedPassword,
-      roleId: 1
-    },
-  });
-
-  if (!user) {
-    return {
-      message: 'An error occurred while creating your account.',
+    if (existingUser) {
+      return { message: 'This email is already registered.' };
     }
-  }
 
-  const token = await createToken({ userId: user.id, name});
-  setCookie("authToken", token);
+   // ذخیره در دیتابیس
+    const user = await prisma.user.create({
+      data: {
+        name,
+        email,
+        password: hashedPassword,
+        roleId: 1
+      },
+    });
+  
+    if (!user) {
+      return {
+        message: 'An error occurred while creating your account.',
+      }
+    }
+  
+      const token = await createToken({ userId: user.id, name});
+    setCookie("authToken", token);
 
 
-  redirect('/')
+  
+  
+} catch (error) {
+  console.error("Error during signup process:", error);
 }
+redirect('/')
+
+}
+
 
 export async function logout() {
   await clearCookie("authToken")
